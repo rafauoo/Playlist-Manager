@@ -12,7 +12,7 @@ class Playlist
         vector <string> song_list;
         void set_song_list(vector <string>);
     public:
-        Playlist(string, string);
+        Playlist();
         vector <string> get_song_list();
         void set_name(string);
         void set_author(string);
@@ -25,6 +25,7 @@ class Playlist
         string get_date_created();
         string get_date_modified();
         int get_duration();
+        string get_song_by_id(int);
         string get_play_type();
         int search_song(string);
         void add_song(string);

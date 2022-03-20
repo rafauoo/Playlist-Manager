@@ -1,10 +1,10 @@
 # Add your algorithm sources to the list below (space delimited):
-set(SOURCES sources/playlist.cpp)
+set(SOURCES sources/playlist.cpp sources/interface.cpp)
 # Add your headers to the list below (space delimited):
-set(HEADERS headers/playlist.h)
+set(HEADERS headers/playlist.h headers/interface.h)
 # Add your test files to the list below (space delimited):
 set(SOURCES_TEST tests/playlist_test.cpp)
-set(SOURCES_MAIN sources/main.cpp sources/playlist.cpp)
+set(SOURCES_MAIN sources/main.cpp)
 
 SET(GCC_WARNINGS_COMPILE_FLAGS "-Wall -Wextra -pedantic -Werror")
 SET(GCC_UB_COMPILE_FLAGS    "-fsanitize=undefined")

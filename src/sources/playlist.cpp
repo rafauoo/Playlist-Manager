@@ -1,11 +1,18 @@
 #include <bits/stdc++.h>
 #include "playlist.h"
 
-Playlist::Playlist(string name, string author)
+Playlist::Playlist()
 {
+    string author = "Author";
+    string name = "Name";
     Playlist::set_author(author);
     Playlist::set_name(name);
     Playlist::set_play_type("Normal");
+}
+
+string Playlist::get_song_by_id(int id)
+{
+    return song_list[id];
 }
 
 string Playlist::get_date_created()

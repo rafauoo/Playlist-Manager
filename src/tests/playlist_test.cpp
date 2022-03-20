@@ -3,12 +3,6 @@
 
 TEST_CASE("Create Playlist")
 {
-    Playlist pl("New Playlist", "Author");
-    CHECK(pl.get_author() == "Author");
-    CHECK(pl.get_name() == "New Playlist");
-    Playlist pl2("AAA", "CCC");
-    CHECK(pl2.get_author() == "CCC");
-    CHECK(pl2.get_name() == "AAA");
 }
 
 TEST_CASE("Setters and getters")
