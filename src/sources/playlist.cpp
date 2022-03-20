@@ -82,6 +82,7 @@ void Playlist::add_song(string song_name)
 
 void Playlist::remove_song(string song_name)
 {
+    // Remove song by name
     long unsigned int song_index = search_song(song_name);
     vector <string> new_song_list;
     for (long unsigned int i = 0; i < song_list.size(); i++)

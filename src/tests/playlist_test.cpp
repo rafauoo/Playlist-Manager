@@ -11,7 +11,7 @@ TEST_CASE("Create Playlist")
     CHECK(pl2.get_name() == "AAA");
 }
 
-TEST_CASE("Setters")
+TEST_CASE("Setters and getters")
 {
     SECTION("Set Author")
     {
@@ -72,9 +72,44 @@ TEST_CASE("Setters")
 
 TEST_CASE("Song Methods")
 {
-    SECTION("Song Count")
+    SECTION("Add Song")
     {
         Playlist pl("New Playlist", "Author");
         CHECK(pl.song_count() == 0);
+        pl.add_song("Song 1");
+        CHECK(pl.song_count() == 1);
+        pl.add_song("Song 2");
+        CHECK(pl.song_count() == 2);
+    }
+    SECTION("Remove Song and Song Count")
+    {
+        Playlist pl("New Playlist", "Author");
+        CHECK(pl.song_count() == 0);
+        pl.add_song("Song 1");
+        CHECK(pl.song_count() == 1);
+        pl.add_song("Song 2");
+        CHECK(pl.song_count() == 2);
+        pl.remove_song("Song 1");
+        CHECK(pl.song_count() == 1);
+        pl.remove_song("Song 2");
+        CHECK(pl.song_count() == 0);
+        REQUIRE_THROWS_AS(pl.remove_song("Song 3"), std::invalid_argument);
+    }
+    SECTION("Search Song")
+    {
+        Playlist pl("New Playlist", "Author");
+        pl.add_song("Song 1");
+        pl.add_song("Song 2");
+        CHECK(pl.search_song("Song 1") == 0);
+        CHECK(pl.search_song("Song 2") == 1);
+    }
+    SECTION("Rename Song")
+    {
+        Playlist pl("New Playlist", "Author");
+        pl.add_song("Song 1");
+        CHECK(pl.song_count() == 1);
+        CHECK(pl.search_song("Song 1") == 0);
+        pl.rename_song("Song 1", "Another Song");
+        CHECK(pl.search_song("Another Song") == 0);
     }
 }
