@@ -9,7 +9,7 @@ TEST_CASE("Setters and getters")
 {
     SECTION("Set Author")
     {
-        Playlist pl("New Playlist", "Author");
+        Playlist pl;
         CHECK(pl.get_author() == "Author");
         pl.set_author("Andrew");
         CHECK(pl.get_author() == "Andrew");
@@ -18,7 +18,7 @@ TEST_CASE("Setters and getters")
     }
     SECTION("Set Name")
     {
-        Playlist pl("New Playlist", "Author");
+        Playlist pl;
         CHECK(pl.get_name() == "New Playlist");
         pl.set_name("Chill");
         CHECK(pl.get_name() == "Chill");
@@ -27,7 +27,7 @@ TEST_CASE("Setters and getters")
     }
     SECTION("Set Duration")
     {
-        Playlist pl("New Playlist", "Author");
+        Playlist pl;
         CHECK(pl.get_duration() == 0);
         pl.set_duration(3);
         CHECK(pl.get_duration() == 3);
@@ -36,7 +36,7 @@ TEST_CASE("Setters and getters")
     }
     SECTION("Set Play Type")
     {
-        Playlist pl("New Playlist", "Author");
+        Playlist pl;
         CHECK(pl.get_play_type() == "Normal");
         pl.set_play_type("User");
         CHECK(pl.get_play_type() == "User");
@@ -46,7 +46,7 @@ TEST_CASE("Setters and getters")
     }
     SECTION("Set Date Created")
     {
-        Playlist pl("New Playlist", "Author");
+        Playlist pl;
         CHECK(pl.get_date_created() == "");
         pl.set_date_created("17-03-2022");
         CHECK(pl.get_date_created() == "17-03-2022");
@@ -55,7 +55,7 @@ TEST_CASE("Setters and getters")
     }
     SECTION("Set Date Modified")
     {
-        Playlist pl("New Playlist", "Author");
+        Playlist pl;
         CHECK(pl.get_date_modified() == "");
         pl.set_date_modified("10-03-2022");
         CHECK(pl.get_date_modified() == "10-03-2022");
@@ -68,7 +68,7 @@ TEST_CASE("Song Methods")
 {
     SECTION("Add Song")
     {
-        Playlist pl("New Playlist", "Author");
+        Playlist pl;
         CHECK(pl.song_count() == 0);
         pl.add_song("Song 1");
         CHECK(pl.song_count() == 1);
@@ -77,7 +77,7 @@ TEST_CASE("Song Methods")
     }
     SECTION("Remove Song and Song Count")
     {
-        Playlist pl("New Playlist", "Author");
+        Playlist pl;
         CHECK(pl.song_count() == 0);
         pl.add_song("Song 1");
         CHECK(pl.song_count() == 1);
@@ -91,7 +91,7 @@ TEST_CASE("Song Methods")
     }
     SECTION("Search Song")
     {
-        Playlist pl("New Playlist", "Author");
+        Playlist pl;
         pl.add_song("Song 1");
         pl.add_song("Song 2");
         CHECK(pl.search_song("Song 1") == 0);
@@ -99,7 +99,7 @@ TEST_CASE("Song Methods")
     }
     SECTION("Rename Song")
     {
-        Playlist pl("New Playlist", "Author");
+        Playlist pl;
         pl.add_song("Song 1");
         CHECK(pl.song_count() == 1);
         CHECK(pl.search_song("Song 1") == 0);

@@ -18,14 +18,17 @@ void Interface::clear()
 
 void Interface::write_playlist()
 {
+    clear();
     for (int i = 0; i < playlist.song_count(); i++)
     {
-        cout << playlist.get_song_by_id(i) << endl;
+        cout << i << ". " << playlist.get_song_by_id(i) << endl;
     }
+    back();
 }
 
 void Interface::write_manage_songs_menu()
 {
+    clear();
     cout << "1. Add Song\n";
     cout << "2. Remove Song\n";
     cout << "3. Rename Song\n";
@@ -37,19 +40,39 @@ void Interface::write_manage_songs_menu()
 
 void Interface::manage_songs_menu()
 {
+    clear();
     switch(choice)
     {
         case 1:
         {
-
+            string name;
+            cout << "Enter song name that you want to add: " << endl;
+            cin >> name;
+            playlist.add_song(name);
+            cout << "Song added successfully!" << endl;
+            break;
         }
         case 2:
         {
-            
+            string name;
+            cout << "Enter song name that you want to remove: " << endl;
+            cin >> name;
+            try
+            {
+                playlist.remove_song(name);
+                cout << "Song removed!" << endl;
+            }
+            catch(const std::invalid_argument& e)
+            {
+                cout << e.what() << endl;
+            }
+            break;
         }
         case 3:
         {
-            
+            string name;
+            string name2;
+            cout << "Enter song name that you want to rename: " << endl;
         }
         case 4:
         {
@@ -72,8 +95,15 @@ void Interface::manage_songs_menu()
             break;
         }
     }
+    back();
 }
 
+void Interface::back()
+{
+    int val;
+    cout << "Type anything to go back..." << endl;
+    cin >> val;
+}
 void Interface::write_menu()
 {
     cout << "What do you want to do?\n";

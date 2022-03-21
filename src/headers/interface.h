@@ -10,6 +10,7 @@ class Interface
         Interface(Playlist&);
         bool breaks;
         void clear();
+        void back();
         void write_menu();
         void input();
         void manage_songs_menu();
