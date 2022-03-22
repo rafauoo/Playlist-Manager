@@ -73,18 +73,54 @@ void Interface::manage_songs_menu()
             string name;
             string name2;
             cout << "Enter song name that you want to rename: " << endl;
+            cin >> name;
+            cout << "Enter new song name: " << endl;
+            cin >> name2;
+            try
+            {
+                playlist.rename_song(name, name2);
+                cout << "Song renamed!" << endl;
+            }
+            catch(const std::invalid_argument& e)
+            {
+                cout << e.what() << endl;
+            }
+            break;
         }
         case 4:
         {
-            
+            string name;
+            cout << "Enter song name that you want to find: " << endl;
+            cin >> name;
+            try
+            {
+                int index = playlist.search_song(name);
+                cout << "Song found on index: " << index << endl;
+            }
+            catch(const std::invalid_argument& e)
+            {
+                cout << e.what() << endl;
+            }
+            break;
         }
         case 5:
         {
-            
+            int index;
+            cout << "Enter song index that you want to find: " << endl;
+            cin >> index;
+            if (index > playlist.song_count())
+            {
+                cout << "Index not found!" << endl;
+                break;
+            }
+            string name = playlist.get_song_by_id(index);
+            cout << "Song found on index: " << index << endl;
+            break;
         }
         case 6:
         {
-            
+            cout << "Song count: " << playlist.song_count() << endl;
+            break;
         }
         case 7:
         {
