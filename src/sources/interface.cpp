@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <stdio.h>
 #include "playlist.h"
 #include "interface.h"
 using namespace std;
@@ -50,6 +51,7 @@ void Interface::manage_songs_menu()
             cin >> name;
             playlist.add_song(name);
             cout << "Song added successfully!" << endl;
+            back();
             break;
         }
         case 2:
@@ -66,6 +68,7 @@ void Interface::manage_songs_menu()
             {
                 cout << e.what() << endl;
             }
+            back();
             break;
         }
         case 3:
@@ -85,6 +88,7 @@ void Interface::manage_songs_menu()
             {
                 cout << e.what() << endl;
             }
+            back();
             break;
         }
         case 4:
@@ -101,6 +105,7 @@ void Interface::manage_songs_menu()
             {
                 cout << e.what() << endl;
             }
+            back();
             break;
         }
         case 5:
@@ -111,15 +116,18 @@ void Interface::manage_songs_menu()
             if (index > playlist.song_count())
             {
                 cout << "Index not found!" << endl;
+                back();
                 break;
             }
             string name = playlist.get_song_by_id(index);
             cout << "Song found on index: " << index << endl;
+            back();
             break;
         }
         case 6:
         {
             cout << "Song count: " << playlist.song_count() << endl;
+            back();
             break;
         }
         case 7:
@@ -131,14 +139,13 @@ void Interface::manage_songs_menu()
             break;
         }
     }
-    back();
 }
 
 void Interface::back()
 {
-    int val;
     cout << "Type anything to go back..." << endl;
-    cin >> val;
+    cin.get();
+    cin.get();
 }
 void Interface::write_menu()
 {
