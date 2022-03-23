@@ -19,7 +19,7 @@ TEST_CASE("Setters and getters")
     SECTION("Set Name")
     {
         Playlist pl;
-        CHECK(pl.get_name() == "New Playlist");
+        CHECK(pl.get_name() == "Name");
         pl.set_name("Chill");
         CHECK(pl.get_name() == "Chill");
         pl.set_name("");
@@ -47,7 +47,7 @@ TEST_CASE("Setters and getters")
     SECTION("Set Date Created")
     {
         Playlist pl;
-        CHECK(pl.get_date_created() == "");
+        CHECK(pl.get_date_created() == "None");
         pl.set_date_created("17-03-2022");
         CHECK(pl.get_date_created() == "17-03-2022");
         pl.set_date_created("29-03-2023");
@@ -56,7 +56,7 @@ TEST_CASE("Setters and getters")
     SECTION("Set Date Modified")
     {
         Playlist pl;
-        CHECK(pl.get_date_modified() == "");
+        CHECK(pl.get_date_modified() == "None");
         pl.set_date_modified("10-03-2022");
         CHECK(pl.get_date_modified() == "10-03-2022");
         pl.set_date_modified("19-03-2023");
