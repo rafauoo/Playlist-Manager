@@ -14,6 +14,7 @@ class Interface
         void write_menu();
         void input();
         void manage_songs_menu();
+        void get_info();
         void write_choice();
         void write_playlist();
         void write_manage_songs_menu();

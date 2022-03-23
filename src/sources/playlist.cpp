@@ -5,6 +5,9 @@ Playlist::Playlist()
 {
     string author = "Author";
     string name = "Name";
+    Playlist::set_duration(0);
+    Playlist::set_date_created("None");
+    Playlist::set_date_modified("None");
     Playlist::set_author(author);
     Playlist::set_name(name);
     Playlist::set_play_type("Normal");

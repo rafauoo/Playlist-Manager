@@ -130,10 +130,6 @@ void Interface::manage_songs_menu()
             back();
             break;
         }
-        case 7:
-        {
-            break;
-        }
         default:
         {
             break;
@@ -149,10 +145,22 @@ void Interface::back()
 }
 void Interface::write_menu()
 {
+    clear();
     cout << "What do you want to do?\n";
     cout << "1. See songs in playlist\n";
     cout << "2. Manage Songs\n";
-    cout << "3. Quit\n";
+    cout << "3. Get Playlist Info\n";
+    cout << "4. Quit\n";
+}
+
+void Interface::get_info()
+{
+    cout << "Playlist Name..................... " << playlist.get_name() << endl;
+    cout << "Playlist Author................... " << playlist.get_author() << endl;
+    cout << "Playlist Creation Date............ " << playlist.get_date_created() << endl;
+    cout << "Playlist Modification Date........ " << playlist.get_date_modified() << endl;
+    cout << "Playlist Duration................. " << playlist.get_duration() << endl;
+    cout << "Playlist Play Type................ " << playlist.get_play_type() << endl;
 }
 
 void Interface::input()
@@ -179,6 +187,13 @@ void Interface::write_choice()
             break;
         }
         case 3:
+        {
+            clear();
+            get_info();
+            back();
+            break;
+        }
+        case 4:
         {
             breaks = true;
             exit(0);
