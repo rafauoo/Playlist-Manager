@@ -19,17 +19,14 @@ void Interface::clear()
 
 void Interface::write_playlist()
 {
-    clear();
     for (int i = 0; i < playlist.song_count(); i++)
     {
         cout << i << ". " << playlist.get_song_by_id(i) << endl;
     }
-    back();
 }
 
 void Interface::write_manage_songs_menu()
 {
-    clear();
     cout << "1. Add Song\n";
     cout << "2. Remove Song\n";
     cout << "3. Rename Song\n";
@@ -41,7 +38,6 @@ void Interface::write_manage_songs_menu()
 
 void Interface::manage_songs_menu()
 {
-    clear();
     switch(choice)
     {
         case 1:
@@ -120,7 +116,7 @@ void Interface::manage_songs_menu()
                 break;
             }
             string name = playlist.get_song_by_id(index);
-            cout << "Song found on index: " << index << endl;
+            cout << "Song found on index " << index << ": " << name << endl;
             back();
             break;
         }
@@ -147,10 +143,11 @@ void Interface::write_menu()
 {
     clear();
     cout << "What do you want to do?\n";
-    cout << "1. See songs in playlist\n";
+    cout << "1. See Songs in the Playlist\n";
     cout << "2. Manage Songs\n";
     cout << "3. Get Playlist Info\n";
-    cout << "4. Quit\n";
+    cout << "4. Set Playlist Info\n";
+    cout << "5. Quit\n";
 }
 
 void Interface::get_info()
@@ -161,6 +158,95 @@ void Interface::get_info()
     cout << "Playlist Modification Date........ " << playlist.get_date_modified() << endl;
     cout << "Playlist Duration................. " << playlist.get_duration() << endl;
     cout << "Playlist Play Type................ " << playlist.get_play_type() << endl;
+}
+
+void Interface::write_set_info_menu()
+{
+    cout << "1. Set Playlist Name\n";
+    cout << "2. Set Playlist Author\n";
+    cout << "3. Set Playlist Creation Date\n";
+    cout << "4. Set Playlist Modification Date\n";
+    cout << "5. Set Playlist Duration\n";
+    cout << "6. See Play Type\n";
+    cout << "7. BACK\n";  
+}
+
+void Interface::set_info_menu()
+{
+    switch(choice)
+    {
+        case 1:
+        {
+            string new_name;
+            cout << "Enter new playlist name:" << endl;
+            cin >> new_name;
+            playlist.set_name(new_name);
+            cout << "Name changed successfully!" << endl;
+            back();
+            break;
+        }
+        case 2:
+        {
+            string new_author;
+            cout << "Enter new playlist author:" << endl;
+            cin >> new_author;
+            playlist.set_author(new_author);
+            cout << "Author changed successfully!" << endl;
+            back();
+            break;
+        }
+        case 3:
+        {
+            string new_cd;
+            cout << "Enter new playlist creation date:" << endl;
+            cin >> new_cd;
+            playlist.set_date_created(new_cd);
+            cout << "Creation date changed successfully!" << endl;
+            back();
+            break;
+        }
+        case 4:
+        {
+            string new_md;
+            cout << "Enter new playlist modification date:" << endl;
+            cin >> new_md;
+            playlist.set_date_modified(new_md);
+            cout << "Modification date changed successfully!" << endl;
+            back();
+            break;
+        }
+        case 5:
+        {
+            int new_dur;
+            cout << "Enter new playlist duration" << endl;
+            cin >> new_dur;
+            playlist.set_duration(new_dur);
+            cout << "Duration changed successfully!" << endl;
+            back();
+            break;
+        }
+        case 6:
+        {
+            string new_pt;
+            cout << "Enter new play type (Random, Normal or User): " << endl;
+            cin >> new_pt;
+            try
+            {
+                playlist.set_play_type(new_pt);
+                cout << "Play type set successfully!" << endl;
+            }
+            catch(const std::invalid_argument& e)
+            {
+                cout << e.what() << endl;
+            }
+            back();
+            break;
+        }
+        default:
+        {
+            break;
+        }
+    }
 }
 
 void Interface::input()
@@ -176,13 +262,17 @@ void Interface::write_choice()
     {
         case 1:
         {
+            clear();
             write_playlist();
+            back();
             break;
         }
         case 2:
         {
+            clear();
             write_manage_songs_menu();
             input();
+            clear();
             manage_songs_menu();
             break;
         }
@@ -195,11 +285,22 @@ void Interface::write_choice()
         }
         case 4:
         {
+            clear();
+            write_set_info_menu();
+            input();
+            clear();
+            set_info_menu();
+            break;
+        }
+        case 5:
+        {
             breaks = true;
             exit(0);
+            break;
         }
         default:
         {
+            breaks = true;
             exit(0);
             break;
         }
