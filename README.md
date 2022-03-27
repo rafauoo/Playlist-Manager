@@ -1,6 +1,6 @@
 # Usage of arguments
-./playlist <name> <author> <creation_date> <modification_date>
-        <duration> <play_type> [songs]
+./playlist [name] [author] [creation_date] [modification_date]
+        [duration] [play_type] [songs]
 
 // [songs] = song1 song2 song3 ... //
 
