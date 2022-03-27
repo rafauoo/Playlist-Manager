@@ -23,10 +23,12 @@ void Interface::write_playlist()
     {
         cout << i << ". " << playlist.get_song_by_id(i) << endl;
     }
+    breaks = true;
 }
 
 void Interface::write_manage_songs_menu()
 {
+    cout << "MANAGE SONGS MENU\n";
     cout << "1. Add Song\n";
     cout << "2. Remove Song\n";
     cout << "3. Rename Song\n";
@@ -124,10 +126,12 @@ void Interface::manage_songs_menu()
         {
             cout << "Song count: " << playlist.song_count() << endl;
             back();
+
             break;
         }
         default:
         {
+            breaks = true;
             break;
         }
     }
@@ -158,6 +162,7 @@ void Interface::get_info()
     cout << "Playlist Modification Date........ " << playlist.get_date_modified() << endl;
     cout << "Playlist Duration................. " << playlist.get_duration() << endl;
     cout << "Playlist Play Type................ " << playlist.get_play_type() << endl;
+    breaks = true;
 }
 
 void Interface::write_set_info_menu()
@@ -244,6 +249,7 @@ void Interface::set_info_menu()
         }
         default:
         {
+            breaks = true;
             break;
         }
     }
@@ -262,40 +268,50 @@ void Interface::write_choice()
     {
         case 1:
         {
-            clear();
-            write_playlist();
-            back();
+            while (breaks == false)
+            {
+                clear();
+                write_playlist();
+                back();
+            }
+            breaks = false;
             break;
         }
         case 2:
         {
-            clear();
-            write_manage_songs_menu();
-            input();
-            clear();
-            manage_songs_menu();
+            while (breaks == false)
+            {
+                clear();
+                write_manage_songs_menu();
+                input();
+                clear();
+                manage_songs_menu();
+            }
+            breaks = false;
             break;
         }
         case 3:
         {
-            clear();
-            get_info();
-            back();
+            while (breaks == false)
+            {
+                clear();
+                get_info();
+                back();
+            }
+            breaks = false;
             break;
         }
         case 4:
         {
-            clear();
-            write_set_info_menu();
-            input();
-            clear();
-            set_info_menu();
-            break;
-        }
-        case 5:
-        {
-            breaks = true;
-            exit(0);
+            while (breaks == false)
+            {
+                clear();
+                write_set_info_menu();
+                input();
+                clear();
+                set_info_menu();
+            }
+            breaks = false;
             break;
         }
         default:
