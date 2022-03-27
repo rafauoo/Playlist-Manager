@@ -25,7 +25,7 @@ class Playlist
         string get_date_created();
         string get_date_modified();
         int get_duration();
-        string get_song_by_id(int);
+        string get_song_by_id(long unsigned int);
         string get_play_type();
         int search_song(string);
         void add_song(string);

@@ -13,8 +13,10 @@ Playlist::Playlist()
     Playlist::set_play_type("Normal");
 }
 
-string Playlist::get_song_by_id(int id)
+string Playlist::get_song_by_id(long unsigned int id)
 {
+    if (id >= song_list.size())
+        throw std::invalid_argument("ID not found!");
     return song_list[id];
 }
 

@@ -89,13 +89,14 @@ TEST_CASE("Song Methods")
         CHECK(pl.song_count() == 0);
         REQUIRE_THROWS_AS(pl.remove_song("Song 3"), std::invalid_argument);
     }
-    SECTION("Search Song")
+    SECTION("Search Song by name")
     {
         Playlist pl;
         pl.add_song("Song 1");
         pl.add_song("Song 2");
         CHECK(pl.search_song("Song 1") == 0);
         CHECK(pl.search_song("Song 2") == 1);
+        REQUIRE_THROWS_AS(pl.search_song("Song 3"), std::invalid_argument);
     }
     SECTION("Rename Song")
     {
@@ -105,5 +106,20 @@ TEST_CASE("Song Methods")
         CHECK(pl.search_song("Song 1") == 0);
         pl.rename_song("Song 1", "Another Song");
         CHECK(pl.search_song("Another Song") == 0);
+        REQUIRE_THROWS_AS(pl.rename_song("Song 1", "Another Song"), std::invalid_argument);
+    }
+    SECTION("Search song by id")
+    {
+        Playlist pl;
+        pl.add_song("Song 1");
+        CHECK(pl.song_count() == 1);
+        CHECK(pl.get_song_by_id(0) == "Song 1");
+        pl.add_song("Song 2");
+        CHECK(pl.song_count() == 2);
+        CHECK(pl.get_song_by_id(1) == "Song 2");
+        pl.add_song("Song 3");
+        CHECK(pl.song_count() == 3);
+        CHECK(pl.get_song_by_id(2) == "Song 3");
+        REQUIRE_THROWS_AS(pl.get_song_by_id(10), std::invalid_argument);
     }
 }
