@@ -172,7 +172,7 @@ void Interface::write_set_info_menu()
     cout << "3. Set Playlist Creation Date\n";
     cout << "4. Set Playlist Modification Date\n";
     cout << "5. Set Playlist Duration\n";
-    cout << "6. See Play Type\n";
+    cout << "6. Set Play Type\n";
     cout << "7. BACK\n";  
 }
 
